@@ -9,6 +9,8 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Button, Image, TouchableOpacity} from 'react-native';
 
+import Topo from './src/components/topo';
+import Palco from './src/components/palco';
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -78,9 +80,7 @@ export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.topo}>
-          <Image style={styles.imageTopo} source={require('./imgs/logo.png')}  />
-        </View>
+        <Topo />
         <View style={styles.areaCentral}>
           <Text style={styles.legenda}>Escolha a sua jogada</Text>
           <View style={styles.containerBotoes}>
@@ -102,9 +102,7 @@ export default class App extends Component<Props> {
           </View>
         </View>
         <View style={styles.palco}>
-          <Text style={styles.welcome}>Escolha do usuário: {this.state.escolhaUsuario}</Text>
-          <Text style={styles.welcome}>Escolha da máquina: {this.state.escolhaComputador}</Text>
-          <Text style={styles.instructions}>Resultado: {this.state.resultado}</Text>
+          <Palco escolhaComputador={this.state.escolhaComputador} escolhaUsuario={this.state.escolhaUsuario} resultado={this.state.resultado}/>
         </View>
       </View>
     );
@@ -159,15 +157,4 @@ const styles = StyleSheet.create({
   palco: {
     flex: 2,
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-  
 });
